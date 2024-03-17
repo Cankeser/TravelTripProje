@@ -1,0 +1,48 @@
+﻿@using TravelTrip.Models.Siniflar
+@model List<AdresBlog>
+@{
+    ViewBag.Title = "Adres";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Adres</h2>
+
+<a href="/admin/AdresEkle" class="btn btn-primary">Adres Ekle</a>
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>Başlık</th>
+        <th>Açıklama</th>
+        <th>Mail</th>
+        <th>Telefon</th>
+        <th>Adres</th>
+        <th>Konum</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.Baslik</td>
+            <td>
+                @(item.Aciklama.Length > 50 ? item.Aciklama.Substring(0, 50) : item.Aciklama)
+            </td>
+            <td>@item.Mail</td>
+            <td>@item.Telefon</td>
+            <td>@item.Adres</td>
+            <td>
+                @(item.Konum.Length > 50 ? item.Konum.Substring(0, 50) : item.Konum)
+            </td>
+            <td><a href="/admin/AdresSil/@item.ID" class="btn btn-danger">Sil</a></td>
+            <td><a href="/admin/AdresGuncelle/@item.ID" class="btn btn-danger">Güncelle</a></td>
+
+        </tr>
+    }
+</table>
+
+
+
+
+

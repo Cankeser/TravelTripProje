@@ -1,0 +1,78 @@
+﻿@model TravelTrip.Models.Siniflar.AdresBlog
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_testLayout.cshtml";
+}
+<style>
+    input[type=text], select, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-top: 6px;
+        margin-bottom: 16px;
+        resize: vertical;
+    }
+
+    input[type=submit] {
+        background-color: #04AA6D;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+    .container {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+    }
+</style>
+<div class="wrap">
+    <div class="contact-top" style="text-align:center;">
+        <h3>İletişim Bilgileri</h3>
+    </div>
+
+    <div class="container">
+        @using (Html.BeginForm("Mesaj", "Contact", FormMethod.Post))
+        {
+            <label for="fname">Ad Soyad</label>
+            <input type="text" id="fname" name="AdSoyad" placeholder="Ad Soyad.." required>
+
+            <label for="lname">Eposta Adresi</label>
+            <input type="text" id="lname" name="Mail" placeholder="Eposta Adresi.." required>
+
+            <label for="lname">Konu</label>
+            <input type="text" id="lname" name="Konu" placeholder="Konu..">
+
+            <label for="subject">Mesaj</label>
+            <textarea id="subject" name="Mesaj" placeholder="Mesajınızı Yazınız" style="height:200px" required></textarea>
+
+            <input type="submit" value="Gönder">
+        }
+
+    </div>
+    <br />
+    <div class="clear"></div>
+    <div class="contact-bottom">
+        <div class="contact-left">
+            <div class="contact-add">
+                <h3>@Model.Baslik : @Model.Adres</h3>
+                <p> @Model.Aciklama</p>
+                <p>Telefon : @Model.Telefon</p>
+                <p>Email : @Model.Mail</p>
+            </div>
+        </div>
+        <div class="contact-map" style="margin-bottom:25px">
+            <iframe width="580" height="250" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src=@Model.Konum style="color: #555;text-align:left"></iframe>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>

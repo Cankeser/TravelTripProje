@@ -1,0 +1,67 @@
+﻿@model TravelTrip.Models.Siniflar.BlogYorum
+
+@{
+    ViewBag.Title = "BlogDetay";
+    Layout = "~/Views/Shared/_testLayout.cshtml";
+}
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+
+    <link href="/web2/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link href="/web2/css/style.css" rel='stylesheet' type='text/css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+</head>
+<body>
+
+    <div class="single">
+        <div class="container">
+            <div class="col-md-12 single-main">
+                @foreach (var x in Model.deger1)
+                {
+                    <div class="single-grid">
+                        <img src="@x.BlogImage" alt="" />
+                        <p>
+                            @x.Aciklama
+                        </p>
+                    </div>
+                }
+      
+                <br />
+                <h4>YORUMLAR</h4>
+
+                @foreach (var y in Model.deger3)
+                {
+                    <ul class="comment-list">
+                        <li>
+                            <div>
+                                <img src="/web2/images/avatar.png" class="img-responsive" alt="">
+                                <h4><span style="color: #00aeff">@y.KullaniciAdi</span></h4>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="desc">
+
+                                <p>@y.Yorum</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
+                    </ul>
+                }
+                @Html.Action("YorumYap", "Blog")
+            </div>
+
+
+        </div>
+    </div>
+    <!---->
+</body>
+</html>
+
+
+
+

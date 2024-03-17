@@ -1,0 +1,20 @@
+﻿@model TravelTrip.Models.Siniflar.Hakkimizda
+@{
+    ViewBag.Title = "HakkimizdaEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>HakkimizdaEkle</h2>
+
+<br />
+@using (Html.BeginForm("HakkimizdaEkle", "Admin", FormMethod.Post))
+{
+    @Html.LabelFor(x => x.FotoUrl)
+    @Html.TextBoxFor(x => x.FotoUrl, new { @class = "form-control", @required = "required" })
+    <br />
+    @Html.LabelFor(x => x.Aciklama)
+    @Html.TextAreaFor(x => x.Aciklama, 15, 1, new { @class = "form-control", @required = "required" })
+    <br />
+    <button class="btn btn-primary">Ekle</button>
+}
+

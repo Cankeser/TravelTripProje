@@ -1,0 +1,13 @@
+﻿@model TravelTrip.Models.Siniflar.Hakkimizda
+@{
+    ViewBag.Title = "About";
+    Layout = "~/Views/Shared/_testLayout.cshtml";
+}
+
+<div class="wrap">
+    <div class="about">
+        <h3>Hakkımızda</h3>
+        <img src=@Model.FotoUrl alt="" />
+        <p> @Model.Aciklama </p>
+    </div>
+</div>

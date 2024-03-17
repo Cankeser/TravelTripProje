@@ -1,0 +1,67 @@
+﻿@using TravelTrip.Models.Siniflar
+@model List<Iletisim>
+
+@{
+    ViewBag.Title = "Iletisim";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Mesajlar</h2>
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>Ad Soyad</th>
+        <th>Mail</th>
+        <th>Konu</th>
+        <th>Mesaj</th>
+        <th>Sil</th>
+
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.AdSoyad</td>
+            <td>@item.Mail</td>
+            <td>@item.Konu</td>
+            <td>
+                @item.Mesaj
+            </td>
+            <td><a href="/Admin/MesajSil/@item.ID" class="btn btn-danger">Sil</a></td>
+
+        </tr>
+    }
+</table>
+
+<!-- Detay Modal -->
+<div id="detayModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Mesaj Detayları</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="detayIcerik"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".btn-detay-toggle").click(function () {
+            var Mesaj = $(this).data("Mesaj");
+            $("#detayIcerik").text(Mesaj);
+            $("#detayModal").modal("show");
+        });
+    });
+</script>
+
+
+

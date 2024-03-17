@@ -1,0 +1,99 @@
+﻿
+@model TravelTrip.Models.Siniflar.BlogYorum
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_testLayout.cshtml";
+}
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+
+    <link href="~/web2/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link href="~/web2/css/style.css" rel='stylesheet' type='text/css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+
+    <link href='http://fonts.googleapis.com/css?family=Oswald:100,400,300,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,300italic' rel='stylesheet' type='text/css'>
+    <!----//webfonts---->
+
+</head>
+<body>
+
+    <div class="content">
+        <div class="container">
+            <div class="content-grids">
+                <div class="col-md-8 content-main">
+                    <div class="content-grid">
+                        @foreach (var x in Model.deger1)
+                        {
+                            <div class="content-grid-info">
+                                <img src="@x.BlogImage" alt="" />
+                                <div class="post-info">
+                                    <h4><a href="/blog/blogdetay/@x.Id">@x.Baslik</a>  @x.Tarih / 27 Comments</h4>
+                                    <p class="aciklama">@x.Aciklama</p>
+                                    <a href="/blog/blogdetay/@x.Id"><span></span>DEVAMINI OKU</a>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+                <div class="col-md-4 content-right">
+                    <div class="recent ">
+                        <h4><u>Son Bloglar</u></h4>
+                        <br />
+                        <ul>
+                            @foreach (var b in Model.deger2)
+                            {
+                                <li>
+                                    <img src="@b.BlogImage" alt="@b.Baslik">
+                                    <a href="/blog/blogdetay/@b.Id">@b.Baslik</a>
+                                </li>
+                            }
+
+                        </ul>
+                    </div>
+
+                    <div class="comments">
+                        <h4><u>Son Yorumlar</u> </h4> <br />
+                        <ul>
+                            <li><a href="#">Amada Doe </a> on <a href="#">Hello World!</a></li>
+                            <li><a href="#">Peter Doe </a> on <a href="#"> Photography</a></li>
+                            <li><a href="#">Steve Roberts  </a> on <a href="#">HTML5/CSS3</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+  
+
+    <script>
+        // Tüm "aciklama" sınıfına sahip paragrafları seç
+        var aciklamaParagraflari = document.querySelectorAll('.aciklama');
+
+        // Her bir paragraf için döngü yap
+        aciklamaParagraflari.forEach(function (paragraf) {
+            // Paragrafın içeriğini al
+            var metin = paragraf.textContent;
+
+            // İlk 50 karakteri al
+            var ilk_50_karakter = metin.slice(0, 300);
+
+            // Paragrafın içeriğini sadece ilk 50 karakter ile güncelle
+            paragraf.textContent = ilk_50_karakter;
+        });
+    </script>
+
+</body>
+
+</html>
+
+

@@ -1,0 +1,63 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<title>Admin PaneliS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<style>
+    .w3-sidebar .w3-bar-item.active {
+        font-weight: bold;
+        color: red; /* Vurgu rengi */
+    }
+</style>
+<body>
+
+    <!-- Sidebar -->
+    <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:15%">
+        <h3 class="w3-bar-item">Menuler</h3>
+        <a href="/admin/index" class="w3-bar-item w3-button">Bloglar</a>
+        <a href="/admin/yorumlar" class="w3-bar-item w3-button">Yorumlar</a>
+        <a href="/admin/adres" class="w3-bar-item w3-button">Adresler</a>
+        <a href="/admin/iletisim" class="w3-bar-item w3-button">Mesajlar</a>
+        <a href="/admin/hakkimizda" class="w3-bar-item w3-button">Hakkımızda</a>
+        <a href="/Default/index" class="w3-bar-item w3-button">Siteye Git</a>
+        <a href="/Login/LogOut" class="w3-bar-item w3-button ">Çıkış Yap</a>
+    </div>
+    <!-- Page Content -->
+    <div style="margin-left:15%">
+
+        <div class="w3-container w3-teal">
+            <h1>Admin Yönetim Paneli</h1>
+        </div>
+
+
+        <div class="w3-container">
+            @RenderBody()
+        </div>
+
+    </div>
+
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var currentLocation = window.location.pathname; // Mevcut URL'yi alır
+        var links = document.querySelectorAll(".w3-sidebar .w3-bar-item"); // Tüm menü bağlantılarını alır
+
+        // Tüm menü bağlantıları üzerinde döner
+        links.forEach(function (link) {
+            // Eğer bağlantının href özelliği mevcut URL'yi içeriyorsa
+            if (link.getAttribute("href") === currentLocation) {
+                link.classList.add("active"); // active sınıfını ekler
+            }
+        });
+    });
+
+</script>
+
+</html>
+
